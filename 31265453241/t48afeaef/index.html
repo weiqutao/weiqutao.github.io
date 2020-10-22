@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拼拼拼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="app-pic" >
+    <div class="figcaption">
+        大岁程序员，生存不易。双十一为大家省钱，特给大家发红*包；如有打扰到你，请手下留情，红包可以拿走，请忽举报，谢谢您！
+    </div>
+    <img src="https://img.alicdn.com/imgextra/i1/48173114/O1CN019IsyjG1YsFyt5rg9S_!!48173114.png" id="hb-copy" data-text="￥1HHXciNmpHg$" class="app-btn" >
+</div>
+<div class="app-toast">
+    领取成功！打开手淘兑换领取超级大红包！
+</div>
+</body>
+<style>
+    * { padding: 0;margin: 0;}
+    .figcaption {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.5rem 1rem;
+        color: #fff;
+        background-color: rgba(0,0,0,.5);
+        font-size: 0.8rem;
+        line-height: 20px;
+    }
+    .app-pic {
+        width: 100vw;
+        height: 100vh;
+        background: url("https://img.alicdn.com/imgextra/i1/48173114/O1CN01kpOBO71YsFyllIxdq_!!48173114.png") no-repeat;
+        background-color: #ff731e;
+        background-size: contain;
+        position: relative;
+    }
+    .app-btn {
+        width: 300px;
+        height: auto;
+        position: absolute;
+        bottom: 50px;
+        left: 12%;
+        z-index: 999999;
+    }
+    .app-toast {
+        position: fixed;
+        width: 50%;
+        left: 30%;
+        text-align: center;
+        margin-left: -1.5rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        border-radius: 0.1rem;
+        line-height: 25px;
+        transition: all 0.5s;
+        opacity: 0;
+        padding: 10px;
+        font-size: 20px;
+        bottom: 120px;
+    }
+</style>
+<script src="https://cdn.bootcdn.net/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+
+<script>
+    $(".app-btn").on('click',function () {
+        let text = $(this).data('text');
+        var clipboard = new ClipboardJS('#hb-copy', {
+            text: function () {
+                return text;
+            }
+        });
+        clipboard.on('success', function(e) {
+            $('.app-toast').css({
+                transition: 'all 0.5s',
+                opacity: 1
+            });
+            setTimeout(() => {
+                $('.app-toast').css({
+                    opacity: 0
+                })
+            }, 2200);
+        })
+    })
+
+</script>
+</html>
